@@ -1,54 +1,47 @@
-# React + TypeScript + Vite
+## 3D Effect
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```jsx
+perspective-[1000px] [transform-style:preserve-3d]
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 🧠 1. `perspective-[1000px]`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+This sets a **3D perspective** on the parent element.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+It tells the browser **how "deep" the 3D space should feel**.
+
+- Think of it like your **camera distance** from an object.
+- A **lower number (e.g., 100px)** = more dramatic 3D effect (like you're very close).
+- A **higher number (e.g., 1000px)** = more subtle 3D effect (like you're farther away).
+
+### 🧠 2. `[transform-style:preserve-3d]`
+
+This is a **custom Tailwind utility** (note the square brackets). It tells the element to **preserve its children’s 3D transforms** instead of flattening them.
+
+```css
+transform-style: preserve-3d;
 ```
+
+- Makes sure that children elements (with things like `rotateX`, `rotateY`, etc.) **actually render in 3D**.
+- If you don’t set this, the children will look like flat 2D layers.
+
+## Custom shadow
+
+```jsx
+shadow-[0px_1px_4px_0px_rgba(255,255,255,0.1)_inset,0px_-1px_2px_0px_rgba(255,255,255,0.1)_inset]
+```
+
+```jsx
+x-offset y-offset blur-radius spread-radius color inset
+```
+
+### Mental Model:
+
+| Offset | Where it goes |
+| --- | --- |
+| `y = +ve` | Bottom of the box |
+| `y = -ve` | Top of the box |
+| `x = +ve` | Right side |
+| `x = -ve` | Left side |
+
+inset: Means the shadow is inside the element (not outside like a normal box shadow).
