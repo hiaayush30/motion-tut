@@ -1,3 +1,5 @@
+## in framer motion settings propagate from parent to children
+
 ## 3D Effect
 
 ```jsx

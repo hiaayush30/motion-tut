@@ -1,5 +1,6 @@
 //variants for reusable code
 //ochestrations => do something on child div on hovering on parent
+//stagger => one after another
 
 
 import { useState } from "react";
@@ -29,12 +30,38 @@ const Links = [
 function SideBar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const sideBarVariant = {
-    open:{
-      width:"16rem"
+  const parentVariant = {
+    open: {
+      width: "16rem"
     },
-    close:{
-      width:"4.5rem"
+    close: {
+      width: "4.5rem"
+    }
+  }
+
+  const childVariant = {
+    open: {
+      opacity: 1,
+      y: 0
+    },
+    close: {
+      opacity: 0,
+      y: -10
+    }
+  }
+
+  const parent2Variant = {
+    open: {
+      transition: {
+        staggerChildren: 0.7,
+        delayChildren: 0.2
+      }
+    },
+    close: {
+      transition: {
+        staggerChildren: 0.5,
+        delayChildren: -1
+      }
     }
   }
 
@@ -46,8 +73,9 @@ function SideBar() {
       // animate={{
       //   width: isOpen ? "16rem" : "4.5rem"
       // }}
-      variants={sideBarVariant}
-      animate={isOpen ? "open":"close"}
+      variants={parentVariant}
+      animate={isOpen ? "open" : "close"}
+      exit="close"
 
       transition={{
         duration: 0.3
@@ -61,19 +89,25 @@ function SideBar() {
         {isOpen ? 'Close' : 'Open'}
       </button>
 
-      <div className="flex flex-col items-center w-full mt-10">
+      <motion.nav
+        variants={parent2Variant}
+        className="flex flex-col items-center w-full mt-10">
         {Links.map((link) => (
-          <Link
-            key={link.name}
-            to={link.to} // Use 'to' prop for react-router-dom
-            className={`relative flex items-center justify-center w-full p-3 rounded-md hover:bg-red-400 transition-colors duration-200 ${isOpen ? 'justify-start space-x-4' : ''
-              }`}
+          <motion.div
+            variants={childVariant}
           >
-            {link.icon}
-            {isOpen && <span className="text-white">{link.name}</span>}
-          </Link>
+            <Link
+              key={link.name}
+              to={link.to} // Use 'to' prop for react-router-dom
+              className={`relative flex items-center justify-center w-full p-3 rounded-md hover:bg-red-400 transition-colors duration-200 ${isOpen ? 'justify-start space-x-4' : ''
+                }`}
+            >
+              {link.icon}
+              {isOpen && <span className="text-white">{link.name}</span>}
+            </Link>
+          </motion.div>
         ))}
-      </div>
+      </motion.nav>
     </motion.div>
   );
 }
