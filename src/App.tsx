@@ -1,3 +1,5 @@
+import Animate from "./components/Animate"
+import AnimationSequences from "./components/AnimationSequences"
 import { LayoutNavbar } from "./components/LayoutNavbar"
 import MotionLayouts from "./components/MotionLayouts"
 
@@ -12,7 +14,9 @@ function App() {
     <div>
        {/* <MotionHooks/> */}
        {/* <MotionLayouts/> */}
-       <LayoutNavbar/>
+       {/* <LayoutNavbar/> */}
+       {/* <Animate/> */}
+       <AnimationSequences/> 
     </div>
   )
 }
