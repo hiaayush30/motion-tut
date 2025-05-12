@@ -1,7 +1,6 @@
-import Button from "./components/Button"
-import Card from "./components/Card"
-import MotionHooks from "./components/MotionHooks"
-import SideBar from "./components/SideBar"
+import { LayoutNavbar } from "./components/LayoutNavbar"
+import MotionLayouts from "./components/MotionLayouts"
+
 
 function App() {
   return (
@@ -11,7 +10,9 @@ function App() {
     //   <Button/>
     // </div>
     <div>
-       <MotionHooks/>
+       {/* <MotionHooks/> */}
+       {/* <MotionLayouts/> */}
+       <LayoutNavbar/>
     </div>
   )
 }

@@ -32,7 +32,7 @@ export default function MotionHooks() {
                 "This is a brief description of the first feature. It highlights a key benefit or functionality.",
             content: <div>
                 <img
-                    src="https://assets.aceternity.com/pro/car-2.jpg"
+                    src="https://plus.unsplash.com/premium_photo-1664303847960-586318f59035?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2Fyc3xlbnwwfHwwfHx8MA%3D%3D"
                     alt="car"
                     height={500}
                     width={500}
@@ -46,7 +46,7 @@ export default function MotionHooks() {
             description: "Describe the second feature here. Explain how it helps users or what problem it solves.",
             content: <div>
                 <img
-                    src="https://assets.aceternity.com/pro/car-1.jpg"
+                    src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2Fyc3xlbnwwfHwwfHx8MA%3D%3D"
                     alt="car"
                     height={500}
                     width={500}
@@ -64,7 +64,7 @@ export default function MotionHooks() {
         }}
         transition={{
             duration:1,
-            ease:'easeInOut'
+            ease:'easeInOut '
         }}
         ref={containerRef} className={`flex min-h-screen items-center justify-center`}>
             <div className="mx-auto flex max-w-4xl flex-col gap-10 py-40">
